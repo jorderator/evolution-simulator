@@ -12,21 +12,14 @@ function initialise()
 	time = 0
 	active = false
 
-	make_entities(entities, 10)
+	make_entities(10)
 end
 
-function make_entities(entity_table, number)
+function make_entities(number)
 	for i = 1, number do
 		local temp_entity = entity_control:create()
-		table.insert(entity_table, temp_entity)
+		table.insert(entities, temp_entity)
 	end
-end
-
-function colour_entity(entity)
-	local r = ((entity.speed - 20) / 180 - 0.1) / 0.9
-	local g = ((entity.sight - 100) / 200 - 0.1) / 0.9
-	local b = ((entity.size - 6) / 14 - 0.1) / 0.9
-	return r, g, b
 end
 
 function love.keypressed(key)
@@ -58,11 +51,11 @@ function love.draw()
 
 	gr.setColor(0, 1, 0.2)
 	for i, meal in pairs(food) do
-		gr.circle("fill", meal.x, meal.y, 5)
+		gr.circle("line", meal.x, meal.y, 5)
 	end
 
 	for k, entity in pairs(entities) do
-		gr.setColor(colour_entity(entity))
+		gr.setColor(entity:colour())
 		gr.circle("fill", entity.x, entity.y, entity.size)
 	end
 end
