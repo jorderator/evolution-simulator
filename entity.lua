@@ -15,8 +15,6 @@ function entity:create(parent)
 	else
 		local window_width, window_height = gr.getDimensions()
 		new_entity.x, new_entity.y = rand(10, window_width - 10), rand(10, window_height - 10)
-		--print("x: " .. new_entity.x .. " y: " .. new_entity.y)
-
 		new_entity.speed = rand(20, 200)
 		new_entity.sight = rand(100, 300)
 		new_entity.size = rand(6, 20)

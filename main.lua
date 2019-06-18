@@ -18,9 +18,15 @@ end
 function make_entities(entity_table, number)
 	for i = 1, number do
 		local temp_entity = entity_control:create()
-		print("x: " .. temp_entity.x .. " y: " .. temp_entity.y)
 		table.insert(entity_table, temp_entity)
 	end
+end
+
+function colour_entity(entity)
+	local r = ((entity.speed - 20) / 180 - 0.1) / 0.9
+	local g = ((entity.sight - 100) / 200 - 0.1) / 0.9
+	local b = ((entity.size - 6) / 14 - 0.1) / 0.9
+	return r, g, b
 end
 
 function love.keypressed(key)
@@ -55,9 +61,8 @@ function love.draw()
 		gr.circle("fill", meal.x, meal.y, 5)
 	end
 
-	gr.setColor(0.5, 0, 0.5)
 	for k, entity in pairs(entities) do
-		--print("other x: " .. entity.x .. " y: " .. entity.y)
+		gr.setColor(colour_entity(entity))
 		gr.circle("fill", entity.x, entity.y, entity.size)
 	end
 end
