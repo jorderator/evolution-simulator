@@ -3,16 +3,25 @@ rand = love.math.random
 entity_control = require("entity")
 
 function love.load()
+	properties = {
+		initial_entities = 10,
+		food_ratio = 200
+	}
+
 	initialise()
 end
 
 function initialise()
+	local window_width, window_height = gr.getDimensions()
+
 	food = {}
 	entities = {}
 	time = 0
 	active = false
 
-	make_entities(10)
+	properties.food_amount = math.floor((window_width / properties.food_ratio) * (window_height / properties.food_ratio))
+
+	make_entities(properties.initial_entities)
 end
 
 function make_entities(number)
@@ -40,7 +49,7 @@ function love.update(dt)
 	local window_width, window_height = gr.getDimensions()
 	if active then time = time + dt end
 
-	while #food < math.floor(time + 20) do
+	while #food < math.floor(time * (properties.food_amount / 40) + properties.food_amount) do
 		local food_x, food_y = rand(10, window_width - 10), rand(10, window_height - 10)
 		table.insert(food, {x = food_x, y = food_y})
 	end

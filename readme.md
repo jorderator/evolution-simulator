@@ -13,6 +13,9 @@ The features currently present in the project include:
 * Individual entity stats are represented as an RGB value used to draw that entity
 * The initial range of entity statistics is able to be changed, both for testing throughout
    developement, and for later when the side menu is added
+* Amount of food and the rate it appears at changes based on the window size, to prevent window
+   size having more than one effect (the space the entities have), by making the food sparser or
+   denser as well
 
 ## Planned Features:
 
@@ -20,12 +23,12 @@ These are the various ideas I have planned, including features I plan to work on
 ideas for potential features to be fleshed out and implemented later, and anywhere in between, in 
 something of an order.
 
-* Change amount of food and perhaps entities to suit window size, to prevent large window sizes
-   causing very sparse food, and vice versa
 * Implementing entity behaviour, including several forms of movement, death, reproduction, etc
-* More entity properties, including those governing more complex behaviours to be added later
+* Improve the food distribution system, to make it easier to modify, and have a better default
+   setting
 * Add a side menu that can be hidden and showed, that allows changing of properties like entity
    stat ranges, food distribution, etc
+* More entity properties, including those governing more complex behaviours to be added later
 
 (for now, the current and planned features lists are mostly to keep track of things for my own sake, 
 but they will be changed to be more friendly once the project is more fleshed out)
