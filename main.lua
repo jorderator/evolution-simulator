@@ -67,6 +67,10 @@ function love.update(dt)
 
 	for i, entity in pairs(entities) do
 		entity:update(time)
+
+		if entity.energy < 0 then
+			table.remove(entities, i)
+		end
 	end
 
 	if math.floor((time - dt) * (properties.food_amount / properties.food_growth)) < math.floor(time * (properties.food_amount / properties.food_growth)) and active then
@@ -86,5 +90,7 @@ function love.draw()
 	for k, entity in pairs(entities) do
 		gr.setColor(entity:colour())
 		gr.circle("fill", entity.x, entity.y, entity.size)
+		gr.setColor(1, 1, 1)
+		gr.print(math.floor(entity.energy), entity.x - 12, entity.y - 8)
 	end
 end

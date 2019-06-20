@@ -3,6 +3,7 @@ rand = love.math.random
 
 local entity = {
 	time = 0,
+	energy = 100,
 	speed_range = {
 		min = 20,
 		max = 70
@@ -22,12 +23,14 @@ function entity:create(parent)
 	local new_entity = setmetatable({}, self)
 
 	new_entity.angle = rand(0, 3.14)
+	new_entity.time = 0
 
 	if parent ~= nil then
 		new_entity.x, new_entity.y = parent.x, parent.y
 		new_entity.speed = rand(parent.speed - 30, parent.speed + 30)
 		new_entity.sight = rand(parent.sight - 30, parent.sight + 30)
 		new_entity.size = rand(parent.size - 2, parent.size + 2)
+		new_entity.energy = 100 + parent.energy / 5
 	else
 		local window_width, window_height = gr.getDimensions()
 		new_entity.x, new_entity.y = rand(10, window_width - 10), rand(10, window_height - 10)
@@ -58,8 +61,8 @@ function entity:update(time)
 			self.x = self.x + (distance_x * dt)
 			self.y = self.y + (distance_y * dt)
 		else
-			self.x = food[closest_food[1]].x
-			self.y = food[closest_food[1]].y
+			--self.x = food[closest_food[1]].x
+			--self.y = food[closest_food[1]].y
 		end
 
 		if closest_food[2] < self.size then
@@ -86,11 +89,21 @@ function entity:update(time)
 	elseif self.y > window_height then self.y = window_height 
 	end
 
+	if math.floor(self.time) < math.floor(time) and active then
+		if self.energy > 150 then
+			table.insert(entities, self:create(self))
+			self.energy = self.energy - 4
+		end
+
+		self.energy = self.energy - (self.speed / 15 + self.sight / 30 + self.size^2 / 45)
+	end
+
 	self.time = time
 end
 
 function entity:eat(index)
 	table.remove(food, index)
+	self.energy = self.energy + 50
 end
 
 function entity:colour()

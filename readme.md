@@ -16,8 +16,9 @@ The features currently present in the project include:
 * Amount of food and the rate it appears at changes based on the window size, to prevent window
    size having more than one effect (the space the entities have), by making the food sparser or
    denser as well
-* Basic entity movement, including targeting food if within range, and primitive wandering if not, 
-   as well as simple food consumption, when they get close enough
+* Basic entity behaviour, including targeting food if within range, and primitive wandering if not, 
+   as well as food consumption, when they get close enough, reproducing if they have enough energy,
+   and dying if they run out, leading to basic evolution!
 * Basic time controls to allow for adjusting the speed of the simulation
 
 ## Planned Features:
@@ -26,9 +27,12 @@ These are the various ideas I have planned, including features I plan to work on
 ideas for potential features to be fleshed out and implemented later, and anywhere in between, in 
 something of an order.
 
-* Continue implementing entity behaviour, including death, reproduction, etc
+* Continue work on entity behaviour, such as,
+* Bug fixes~ (the 'loop in gettable' crash is known btw, I am open to any suggestions to fix it)
 * Improve the food distribution system, to make it easier to modify, and have a better default
    setting
+* Improve the ease of changing stats, and make more properties easily changeable, to allow for 
+   more options in the future side menu
 * Add a side menu that can be hidden and showed, that allows changing of properties like entity
    stat ranges, food distribution, etc
 * More entity properties, including those governing more complex behaviours to be added later
