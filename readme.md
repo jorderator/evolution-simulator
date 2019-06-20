@@ -16,6 +16,7 @@ The features currently present in the project include:
 * Amount of food and the rate it appears at changes based on the window size, to prevent window
    size having more than one effect (the space the entities have), by making the food sparser or
    denser as well
+* Basic entity movement, including targeting food if within range, and primitive wandering if not
 
 ## Planned Features:
 
@@ -23,12 +24,14 @@ These are the various ideas I have planned, including features I plan to work on
 ideas for potential features to be fleshed out and implemented later, and anywhere in between, in 
 something of an order.
 
-* Implementing entity behaviour, including several forms of movement, death, reproduction, etc
+* Continue implementing entity behaviour, including death, reproduction, etc
 * Improve the food distribution system, to make it easier to modify, and have a better default
    setting
 * Add a side menu that can be hidden and showed, that allows changing of properties like entity
    stat ranges, food distribution, etc
 * More entity properties, including those governing more complex behaviours to be added later
+* Not really a feature, but add comments and stuff to the code, so it isn't just a mess of
+   crazy
 
 (for now, the current and planned features lists are mostly to keep track of things for my own sake, 
 but they will be changed to be more friendly once the project is more fleshed out)

@@ -49,6 +49,10 @@ function love.update(dt)
 	local window_width, window_height = gr.getDimensions()
 	if active then time = time + dt end
 
+	for i, entity in pairs(entities) do
+		entity:update(time)
+	end
+
 	while #food < math.floor(time * (properties.food_amount / 40) + properties.food_amount) do
 		local food_x, food_y = rand(10, window_width - 10), rand(10, window_height - 10)
 		table.insert(food, {x = food_x, y = food_y})
