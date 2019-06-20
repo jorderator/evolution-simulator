@@ -49,7 +49,7 @@ function entity:update(time)
 		end
 	end
 
-	dt = time - self.time
+	local dt = time - self.time
 	if closest_food[1] ~= -1 then
 		if closest_food[2] > self.speed * dt then
 			self.angle = math.atan2((food[closest_food[1]].y - self.y), (food[closest_food[1]].x - self.x))
@@ -60,6 +60,10 @@ function entity:update(time)
 		else
 			self.x = food[closest_food[1]].x
 			self.y = food[closest_food[1]].y
+		end
+
+		if closest_food[2] < self.size then
+			self:eat(closest_food[1])
 		end
 	else
 		local choice = rand(0, self.time % 3)
@@ -85,6 +89,9 @@ function entity:update(time)
 	self.time = time
 end
 
+function entity:eat(index)
+	table.remove(food, index)
+end
 
 function entity:colour()
 	local r = (((self.speed - self.speed_range.min) / (self.speed_range.max - self.speed_range.min)) + 0.2) / 1.2

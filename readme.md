@@ -16,7 +16,9 @@ The features currently present in the project include:
 * Amount of food and the rate it appears at changes based on the window size, to prevent window
    size having more than one effect (the space the entities have), by making the food sparser or
    denser as well
-* Basic entity movement, including targeting food if within range, and primitive wandering if not
+* Basic entity movement, including targeting food if within range, and primitive wandering if not, 
+   as well as simple food consumption, when they get close enough
+* Basic time controls to allow for adjusting the speed of the simulation
 
 ## Planned Features:
 
